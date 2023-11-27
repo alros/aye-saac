@@ -30,9 +30,8 @@ RUN apt-get update -qq && \
 	&& apt-get clean -y
 
 # Install Poetry & ensure it is in $PATH
-# RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | POETRY_PREVIEW=1 python
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-ENV PATH "/root/.poetry/bin:/opt/venv/bin:${PATH}"
+RUN curl -sSL https://install.python-poetry.org | python3 -
+ENV PATH "/root/.local/bin:/opt/venv/bin:${PATH}"
 
 # Copy deps information
 COPY pyproject.toml poetry.lock /app/
